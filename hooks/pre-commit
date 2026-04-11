@@ -1,27 +1,24 @@
 #!/usr/bin/env bash
 
-# copy trhis file into your .git/hooks/pre-commit and make it executable to run pre-commit checks before every commit
+# copy this file into your .git/hooks/pre-commit and make it executable to run pre-commit checks before every commit
 tests_fail=0
 
 # python-pre-commit
-PYTHON_EXECUTABLE=$(where python | findstr "python.exe")
-PYENV_EXECUTABLE=$(where pyenv | findstr "pyenv")
+# PYTHON_EXECUTABLE=$(where python | findstr "python.exe")
+# PYENV_EXECUTABLE=$(where pyenv | findstr "pyenv")
+PYTHON_EXECUTABLE=$(command -v python3)||$(command -v python)
 
 ARGS=(hook-impl --config=.pre-commit-config.yaml --hook-type=pre-commit)
 HERE=$(dirname "$(realpath "$0")")
-ARGS+=(--HOOK-DIR "$HERE" --"$@")
+ARGS+=(--hook-dir "$HERE" --"$@")
 
 if [[ -x "$PYTHON_EXECUTABLE" ]]; then
     if [[ ! -f ".pre-commit-config.yaml" ]]; then
         ARGS=(hook-impl --hook-type=pre-commit)
     fi
     "$PYTHON_EXECUTABLE" -m pre_commit "${ARGS[@]}" || tests_fail=1
-elif [[ -x "$PYENV_EXECUTABLE" ]]; then
-    if [[ ! -f ".pre-commit-config.yaml" ]]; then
-        ARGS=(hook-impl --hook-type=pre-commit)
-    fi
-    "$PYENV_EXECUTABLE" exec pre-commit "${ARGS[@]}" || tests_fail=1
 elif command -v pre-commit > /dev/null 2>&1; then
+    echo "cond2"
     pre-commit "${ARGS[@]}" || tests_fail=1
 else
     echo "pre-commit not found. did you forget to activate your virtualenv?" 1>&2

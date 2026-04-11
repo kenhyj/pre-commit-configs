@@ -9,7 +9,7 @@ repos:
       - id: check-added-large-files
       - id: check-merge-conflict
       - id: check-json
-  - repo: httsp://github.com/psf/black
+  - repo: https://github.com/psf/black
     rev: 23.7.0
     hooks:
       - id: black
@@ -17,10 +17,10 @@ repos:
   - repo: https://github.com/DavidAnson/markdownlint-cli2
     rev: v0.11.0
     hooks:
-      - id: markdownlint
+      - id: markdownlint-cli2
         args: [--config, HOME/.markdownlint.yaml]
   - repo: https://www.github.com/ansible-community/ansible-lint
-    rev: v6.12.2
+    rev: v24.2.3
     hooks:
       - id: ansible-lint
         args: [-r, HOME/.ansible-lint]
@@ -43,7 +43,7 @@ repos:
     hooks:
       - id: pylint
         args: [--rcfile, HOME/.pylintrc]
-  - repo: https://github.com/antonbabneko/pre-commit-terraform
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
     rev: v1.83.5
     hooks:
       - id: terraform_fmt
