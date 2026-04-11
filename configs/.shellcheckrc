@@ -1,0 +1,7 @@
+# sample Rc file at:
+# https://github.com/koalaman/shellcheck/blob/master/shellcheck.1.md#rc-files
+#  For extensive rule list: https://www.shellcheck.net/wiki/
+
+# disable rules
+# disable=SC2000,SC2001,SC2002
+disable=SC1090,SC2046,SC2236
