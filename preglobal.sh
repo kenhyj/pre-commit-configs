@@ -14,4 +14,4 @@ cp --verbose -R -p hooks $HOME/.git-templates/
 
 cp --verbose -R -a configs/. $HOME/lint-configs/.
 
-cp --verbose -R -a $config_file $HOME/$config_file
+cp --verbose -a $config_file $HOME/$config_file
