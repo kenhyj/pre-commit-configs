@@ -1,0 +1,18 @@
+{
+    "extends": "recommended-jenkinsfile",
+    "rules": {
+        "comments.classJavadoc": "off",
+        "formatting.Indentation": {
+            "spacesPerIndentation": 4,
+            "severity": "info"
+        },
+        "formatting.LineLength": {
+            "code": 160,
+            "severity": "info"
+        },
+        "unnecessary.UnnecessaryReturnKeyword": "error",
+        "unnecessary.UnnecessarySemicolon": "error",
+        "unnecessary.UnnecessaryString": "error",
+        "dry.DuplicateStringLiteral": "off"
+    }
+}
