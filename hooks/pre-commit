@@ -18,7 +18,6 @@ if [[ -x "$PYTHON_EXECUTABLE" ]]; then
     fi
     "$PYTHON_EXECUTABLE" -m pre_commit "${ARGS[@]}" || tests_fail=1
 elif command -v pre-commit > /dev/null 2>&1; then
-    echo "cond2"
     pre-commit "${ARGS[@]}" || tests_fail=1
 else
     echo "pre-commit not found. did you forget to activate your virtualenv?" 1>&2

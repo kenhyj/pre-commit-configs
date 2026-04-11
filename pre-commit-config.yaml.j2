@@ -10,39 +10,39 @@ repos:
       - id: check-merge-conflict
       - id: check-json
   - repo: https://github.com/psf/black
-    rev: 23.7.0
+    rev: 26.3.1
     hooks:
       - id: black
-        args: [--config, HOME/pyproject.toml]
+        args: [--config, HOME/lint-configs/pyproject.toml]
   - repo: https://github.com/DavidAnson/markdownlint-cli2
     rev: v0.11.0
     hooks:
       - id: markdownlint-cli2
-        args: [--config, HOME/.markdownlint.yaml]
+        args: [--config, HOME/lint-configs/.markdownlint.yaml]
   - repo: https://www.github.com/ansible-community/ansible-lint
     rev: v24.2.3
     hooks:
       - id: ansible-lint
-        args: [-r, HOME/.ansible-lint]
+        args: [-r, HOME/lint-configs/.ansible-lint]
   - repo: https://github.com/shellcheck-py/shellcheck-py
     rev: v0.9.0.5
     hooks:
       - id: shellcheck
-        args: [--severity-warning] # Optionally only show errors and warnings
+        args: [--severity=warning] # Optionally only show errors and warnings
   - repo: https://github.com/nvuillam/npm-groovy-lint
     rev: v11.0.0
     hooks:
       - id: npm-groovy-lint
         args: [--failon, info, -l, info, -c, HOME/.groovylintrc.json]
       - id: format-npm-groovy-lint # this hook ca be used to automatically fix issues identified by npm-groovy-lint, but it can be run manually as well
-        args: [-c, HOME/.groovylintrc.json]
+        args: [-c, HOME/lint-configs/.groovylintrc.json]
       - id: fix-npm-groovy-lint
         args: [-c, HOME/.groovylintrc.json]
   - repo: https://github.com/PyCQA/pylint
     rev: v2.17.5
     hooks:
       - id: pylint
-        args: [--rcfile, HOME/.pylintrc]
+        args: [--rcfile, HOME/lint-configs/.pylintrc]
   - repo: https://github.com/antonbabenko/pre-commit-terraform
     rev: v1.83.5
     hooks:

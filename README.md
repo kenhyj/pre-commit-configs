@@ -3,10 +3,17 @@
 ## Setting up 
 
 ```shell
-mkdir -p $HOME/.git-templates
-git config --global init.templateDir '$HOMe/.git-templates'
-cp --verbose -R -a lint-configs/* $HOME/lint-configs/
+bash preglobal.sh
+```
+
+Windows:
+
+```shell
+bash preglobal.sh win # for windows pre-commit setup
 ```
 
 ## Bypass the annoying lint during commits
-```git commit -m "your commit message" --no-verify```
+
+```shell
+git commit -m "your commit message" --no-verify
+```
