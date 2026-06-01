@@ -1,8 +1,8 @@
-#/usr/bin/env bash
+#!/usr/bin/env bash
 
  # will globally set up the pre-commits. every future git clone will set up the pre-commit too
 
-if [[ $1 -eq win ]]; then
+if [[ "${1:-}" == "win" ]]; then
     template_file=pre-commit-config.yaml.windows.j2
     homepath="$(echo ${HOME:2})"
     # homepath="${homepath////\\}"
@@ -22,9 +22,11 @@ mkdir -p $HOME/.git-templates
 
 git config --global init.templatedir $HOME/.git-templates
 
-cp --verbose -R -p hooks $HOME/.git-templates/
+cp -v -R -p hooks $HOME/.git-templates/
 
-cp --verbose -R -a configs/. $HOME/lint-configs/.
+mkdir -p $HOME/lint-configs
+cp -v -R -a configs/. $HOME/lint-configs/.
 
-cp --verbose -a $config_file $HOME/$config_file
-
+cp -v -a $config_file $HOME/$config_file
+chmod +x $HOME/$config_file
+chmod +x $HOME/.git-templates/hooks/pre-commit

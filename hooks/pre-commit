@@ -14,7 +14,7 @@ ARGS+=(--hook-dir "$HERE" --"$@")
 
 if [[ -x "$PYTHON_EXECUTABLE" ]]; then
     if [[ ! -f ".pre-commit-config.yaml" ]]; then
-        ARGS=(hook-impl --hook-type=pre-commit)
+        ARGS=(hook-impl --hook-type=pre-commit --config="$HOME/.pre-commit-config.yaml" --hook-dir "$HERE" --"$@")
     fi
     "$PYTHON_EXECUTABLE" -m pre_commit "${ARGS[@]}" || tests_fail=1
 elif command -v pre-commit > /dev/null 2>&1; then

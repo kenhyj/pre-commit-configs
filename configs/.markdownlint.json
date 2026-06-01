@@ -3,6 +3,7 @@
     "MD007" : { "indent": 4 },
     "MD013": false,
     "MD026": {"punctuation": ".,;!" },
+    "MD024": {"siblings_only": true},
     "MD029": {"style": "ordered"},
     "MD033": {
         "allowed_elements": ["br", "hr", "a", "code", "em", "strong", "span", "img", "div", "p", "ul", "ol", "li", "blockquote", "form", "input", "button", "label", "select", "option", "textarea"]
