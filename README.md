@@ -17,3 +17,12 @@ bash preglobal.sh win # for windows pre-commit setup
 ```shell
 git commit -m "your commit message" --no-verify
 ```
+
+### Terraform Tools
+
+The terraform hooks for pre-commit has to be installed manually by users.
+
+- terrascan
+- trivy
+- tflint
+- checkov

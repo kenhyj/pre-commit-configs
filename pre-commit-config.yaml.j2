@@ -11,21 +11,37 @@ repos:
       - id: check-json
       - id: end-of-file-fixer
       - id: trailing-whitespace
+  # Golang
+  repo: https://github.com/tekwizely/pre-commit-golang
+    rev: v1.0.0-rc.4
+    hooks:
+    -   id: go-mod-tidy
+    -   id: go-fmt
+    -   id: go-lint
+  # python
   - repo: https://github.com/psf/black
     rev: 26.3.1
     hooks:
       - id: black
         args: [--config, HOME/lint-configs/pyproject.toml]
+  - repo: https://github.com/PyCQA/pylint
+    rev: v4.0.5
+    hooks:
+      - id: pylint
+        args: [--rcfile, HOME/lint-configs/.pylintrc]
+  # markdown 
   - repo: https://github.com/DavidAnson/markdownlint-cli2
     rev: v0.11.0
     hooks:
       - id: markdownlint-cli2
         args: [--config, HOME/lint-configs/.markdownlint.json]
+  # shell
   - repo: https://github.com/shellcheck-py/shellcheck-py
     rev: v0.9.0.5
     hooks:
       - id: shellcheck
         args: [--severity=warning] # Optionally only show errors and warnings
+  # groovy
   - repo: https://github.com/nvuillam/npm-groovy-lint
     rev: v11.0.0
     hooks:
@@ -35,11 +51,7 @@ repos:
         args: [-c, HOME/lint-configs/.groovylintrc.json]
       - id: fix-npm-groovy-lint
         args: [-c, HOME/.groovylintrc.json]
-  - repo: https://github.com/PyCQA/pylint
-    rev: v4.0.5
-    hooks:
-      - id: pylint
-        args: [--rcfile, HOME/lint-configs/.pylintrc]
+  # terraform
   - repo: https://github.com/antonbabenko/pre-commit-terraform
     rev: v1.105.0
     hooks:
@@ -52,6 +64,9 @@ repos:
           - --args=-recursive
       - id: terraform_validate
       - id: terraform_tflint
-      - id: terraform_checkov
-      - id: terraform_trivy
-      - id: terrascan
+        args:
+          - --args=--recursive
+          - --args=--fix
+    #  - id: terraform_checkov
+    #  - id: terraform_trivy
+    #  - id: terrascan
