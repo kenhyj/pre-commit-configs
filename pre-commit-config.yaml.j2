@@ -13,6 +13,11 @@ repos:
       - id: trailing-whitespace
       - id: detect-aws-credentials
         args: [--allow-missing-credentials]
+  # AWS cloudformation template yaml lint
+  - repo: https://github.com/awslabs/cfn-lint
+    rev: v1.60.1
+    hooks:
+      - id: cfn-lint
   # Golang
   - repo: https://github.com/tekwizely/pre-commit-golang
     rev: v1.0.0-rc.4
